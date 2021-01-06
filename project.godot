@@ -22,6 +22,8 @@ config/icon="res://icon.png"
 [autoload]
 
 GlobalSceneLoader="*res://scripts/global_scene_loader.gd"
+SaverLoader="*res://scripts/saver_loader.gd"
+GameState="*res://scripts/game_state.gd"
 
 [display]
 
