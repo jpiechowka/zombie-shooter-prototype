@@ -10,7 +10,7 @@ func _ready():
 	current_scene = root.get_child(root.get_child_count() - 1)
 
 
-func goto_scene(path):
+func goto_scene(path: String):
 	# This function will usually be called from a signal callback,
 	# or some other function in the current scene.
 	# Deleting the current scene at this point is
@@ -22,7 +22,7 @@ func goto_scene(path):
 	call_deferred("_deferred_goto_scene", path)
 
 
-func _deferred_goto_scene(path):
+func _deferred_goto_scene(path: String):
 	# It is now safe to remove the current scene
 	current_scene.free()
 	
