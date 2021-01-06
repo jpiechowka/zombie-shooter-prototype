@@ -16,14 +16,14 @@ _global_script_class_icons={
 [application]
 
 config/name="ZombieShooterPrototype"
-run/main_scene="res://scenes/main_menu.tscn"
+run/main_scene="res://scenes/menus/main_menu.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
-GlobalSceneLoader="*res://scripts/global_scene_loader.gd"
-SaverLoader="*res://scripts/saver_loader.gd"
-GameState="*res://scripts/game_state.gd"
+GlobalSceneLoader="*res://scripts/autoload/global_scene_loader.gd"
+SaverLoader="*res://scripts/autoload/saver_loader.gd"
+GameState="*res://scripts/autoload/game_state.gd"
 
 [display]
 
