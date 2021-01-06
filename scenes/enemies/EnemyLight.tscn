@@ -5,7 +5,12 @@
 [node name="EnemyLight" type="RigidBody2D" groups=[
 "enemies",
 ]]
+collision_mask = 0
+gravity_scale = 0.0
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Sprite" type="Sprite" parent="."]
 
