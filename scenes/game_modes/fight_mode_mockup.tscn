@@ -38,8 +38,17 @@ one_shot = true
 
 [node name="ScoreTimer" type="Timer" parent="."]
 
-[node name="EnemyTimer" type="Timer" parent="."]
-wait_time = 3.0
+[node name="EnemyLightTimer" type="Timer" parent="."]
+wait_time = 7.0
+
+[node name="EnemyMediumTimer" type="Timer" parent="."]
+wait_time = 16.0
+
+[node name="EnemyHeavyTimer" type="Timer" parent="."]
+wait_time = 20.0
+
+[node name="EnemyBossTimer" type="Timer" parent="."]
+wait_time = 40.0
 
 [node name="EnemyPath" type="Path2D" parent="."]
 curve = SubResource( 1 )
@@ -47,4 +56,7 @@ curve = SubResource( 1 )
 [node name="EnemySpawnLocation" type="PathFollow2D" parent="EnemyPath"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_ScoreTimer_timeout"]
-[connection signal="timeout" from="EnemyTimer" to="." method="_on_EnemyTimer_timeout"]
+[connection signal="timeout" from="EnemyLightTimer" to="." method="_on_EnemyLightTimer_timeout"]
+[connection signal="timeout" from="EnemyMediumTimer" to="." method="_on_EnemyMediumTimer_timeout"]
+[connection signal="timeout" from="EnemyHeavyTimer" to="." method="_on_EnemyHeavyTimer_timeout"]
+[connection signal="timeout" from="EnemyBossTimer" to="." method="_on_EnemyBossTimer_timeout"]

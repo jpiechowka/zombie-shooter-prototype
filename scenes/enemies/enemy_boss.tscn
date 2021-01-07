@@ -4,11 +4,11 @@
 [ext_resource path="res://assets/enemies/zombie_boss_proto.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 24.0625, 24.0625 )
 
 [node name="EnemyBoss" type="KinematicBody2D" groups=[
 "enemies",
 ]]
-collision_mask = 0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
@@ -19,5 +19,4 @@ scale = Vector2( 0.15, 0.15 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2( 2.405, 2.405 )
 shape = SubResource( 1 )

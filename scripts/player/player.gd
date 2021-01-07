@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 
-export var player_speed: int = 225
+export var player_speed: float = 200.0
 
 
 func _ready():
@@ -21,7 +21,7 @@ func _physics_process(delta):
 		player_motion.x -= 1
 	
 	# move_and_slide() will apply delta automatically. Do not multiply vector by delta
-	player_motion = move_and_slide(player_motion.normalized() * player_speed)
+	move_and_slide(player_motion.normalized() * player_speed)
 	
 	look_at(get_global_mouse_position())
 

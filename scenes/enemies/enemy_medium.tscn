@@ -4,12 +4,11 @@
 [ext_resource path="res://assets/enemies/zombie_medium_proto.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 16.0616, 16.054 )
+extents = Vector2( 16.014, 15.9984 )
 
 [node name="EnemyMedium" type="KinematicBody2D" groups=[
 "enemies",
 ]]
-collision_mask = 0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
