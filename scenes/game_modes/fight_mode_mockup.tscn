@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scripts/game_modes/fight_mode_mockup.gd" type="Script" id=1]
 [ext_resource path="res://scenes/player/player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/enemies/enemy_boss.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/enemies/enemy_heavy.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/enemies/enemy_light.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/enemies/enemy_medium.tscn" type="PackedScene" id=6]
 
 [node name="FightModeMockup" type="Node"]
 script = ExtResource( 1 )
@@ -15,5 +19,16 @@ __meta__ = {
 }
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-player_speed = 210
-player_hp = 100.0
+position = Vector2( 1338.37, 722.165 )
+
+[node name="EnemyBoss" parent="." instance=ExtResource( 3 )]
+position = Vector2( 385.769, 234.932 )
+
+[node name="EnemyHeavy" parent="." instance=ExtResource( 4 )]
+position = Vector2( 218, 199 )
+
+[node name="EnemyLight" parent="." instance=ExtResource( 5 )]
+position = Vector2( 711.828, 345.669 )
+
+[node name="EnemyMedium" parent="." instance=ExtResource( 6 )]
+position = Vector2( 743.01, 172.834 )
