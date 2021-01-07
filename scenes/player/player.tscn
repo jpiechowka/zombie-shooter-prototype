@@ -5,9 +5,10 @@
 
 [sub_resource type="RectangleShape2D" id=1]
 
-[node name="Player" type="RigidBody2D"]
-gravity_scale = 0.0
+[node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
+player_speed = null
+player_hp = null
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 0.1, 0.1 )
