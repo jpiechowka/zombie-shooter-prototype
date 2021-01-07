@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/enemies/zombie_medium_proto.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 16.014, 15.9984 )
+extents = Vector2( 17.6274, 17.636 )
 
 [node name="EnemyMedium" type="KinematicBody2D" groups=[
 "enemies",
@@ -15,7 +15,7 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 0.1, 0.1 )
+scale = Vector2( 0.11, 0.11 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
