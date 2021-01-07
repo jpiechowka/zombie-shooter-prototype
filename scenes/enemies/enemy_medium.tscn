@@ -1,9 +1,12 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scripts/enemies/enemy_medium.gd" type="Script" id=1]
 [ext_resource path="res://assets/enemies/zombie_medium_proto.png" type="Texture" id=2]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="OccluderPolygon2D" id=1]
+polygon = PoolVector2Array( -160, -130, -130, -160, 130, -160, 160, -130, 160, 130, 130, 160, -130, 160, -160, 130 )
+
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 17.6274, 17.636 )
 
 [node name="EnemyMedium" type="KinematicBody2D" groups=[
@@ -18,5 +21,8 @@ __meta__ = {
 scale = Vector2( 0.11, 0.11 )
 texture = ExtResource( 2 )
 
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Sprite"]
+occluder = SubResource( 1 )
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+shape = SubResource( 2 )

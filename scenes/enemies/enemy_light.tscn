@@ -1,9 +1,12 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scripts/enemies/enemy_light.gd" type="Script" id=1]
 [ext_resource path="res://assets/enemies/zombie_light_proto.png" type="Texture" id=2]
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="OccluderPolygon2D" id=1]
+polygon = PoolVector2Array( 0, -160, 80.6575, -140.281, 139.653, -79.4125, 160, 0, 140.121, 81.1874, 82.5301, 139.247, 0, 160, -79.9426, 140.183, -141.748, 79.7827, -160, 0, -140.811, -80.349, -79.4741, -140.281 )
+
+[sub_resource type="CircleShape2D" id=2]
 radius = 16.0941
 
 [node name="EnemyLight" type="KinematicBody2D" groups=[
@@ -18,5 +21,8 @@ __meta__ = {
 scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 2 )
 
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Sprite"]
+occluder = SubResource( 1 )
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+shape = SubResource( 2 )

@@ -7,19 +7,19 @@ export (PackedScene) var enemy_heavy_scn
 export (PackedScene) var enemy_boss_scn
 
 # Initial number of spawned enemies
-export var light_enemies_spawn_num = 4
-export var medium_enemies_spawn_num = 3
-export var heavy_enemies_spawn_num = 2
-export var boss_enemies_spawn_num = 1
+export var light_enemies_spawn_num: int = 4
+export var medium_enemies_spawn_num: int = 3
+export var heavy_enemies_spawn_num: int = 2
+export var boss_enemies_spawn_num: int = 1
 
 # Max numbers of enemies to spawn at one time
-export var max_light_enemies_spawn_num = 30
-export var max_medium_enemies_spawn_num = 20
-export var max_heavy_enemies_spawn_num = 15
-export var max_boss_enemies_spawn_num = 5
+export var max_light_enemies_spawn_num: int = 20
+export var max_medium_enemies_spawn_num: int = 15
+export var max_heavy_enemies_spawn_num: int = 10
+export var max_boss_enemies_spawn_num: int = 5
 
 # TODO: rename to gold maybe?
-var score = 0
+var score: int = 0
 
 
 func _ready():

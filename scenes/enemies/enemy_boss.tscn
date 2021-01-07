@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scripts/enemies/enemy_boss.gd" type="Script" id=1]
 [ext_resource path="res://assets/enemies/zombie_boss_proto.png" type="Texture" id=2]
+
+[sub_resource type="OccluderPolygon2D" id=2]
+polygon = PoolVector2Array( -24, -24, 24, -24, 24, 24, -24, 24 )
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 24.0625, 24.0625 )
@@ -17,6 +20,10 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 0.15, 0.15 )
 texture = ExtResource( 2 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Sprite"]
+scale = Vector2( 6.66667, 6.66667 )
+occluder = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
