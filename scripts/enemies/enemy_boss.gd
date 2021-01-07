@@ -1,9 +1,9 @@
 extends KinematicBody2D
 
 
-export var enemy_boss_speed_min: float = 75.0
-export var enemy_boss_speed_max: float = 100.0
-export var enemy_boss_hp: float = 15000.0
+export (float, 50.0, 90.0, 2.5) var enemy_boss_speed_min = 75.0
+export (float, 100.0, 150.0, 2.5) var enemy_boss_speed_max = 100.0
+export (float, 10000.0, 25000.0, 500.0) var enemy_boss_hp = 15000.0
 
 var enemy_speed: float
 var player: Object
@@ -19,7 +19,8 @@ func _physics_process(delta):
 	if is_instance_valid(player):
 		var velocity = global_position.direction_to(player.global_position)
 		
-		# move_and_slide() will apply delta automatically. Do not multiply vector by delta
-		move_and_slide(velocity * enemy_speed)
+		# move_and_collide() will NOT apply delta automatically. Multiply vector by delta
+		# velocity is already normalized
+		move_and_collide(velocity * enemy_speed * delta)
 		
 		look_at(player.global_position)

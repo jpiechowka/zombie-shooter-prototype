@@ -3,10 +3,10 @@
 [ext_resource path="res://scripts/enemies/enemy_boss.gd" type="Script" id=1]
 [ext_resource path="res://assets/enemies/zombie_boss_proto.png" type="Texture" id=2]
 
-[sub_resource type="OccluderPolygon2D" id=2]
+[sub_resource type="OccluderPolygon2D" id=1]
 polygon = PoolVector2Array( -24, -24, 24, -24, 24, 24, -24, 24 )
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 24.0625, 24.0625 )
 
 [node name="EnemyBoss" type="KinematicBody2D" groups=[
@@ -23,7 +23,7 @@ texture = ExtResource( 2 )
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Sprite"]
 scale = Vector2( 6.66667, 6.66667 )
-occluder = SubResource( 2 )
+occluder = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+shape = SubResource( 2 )

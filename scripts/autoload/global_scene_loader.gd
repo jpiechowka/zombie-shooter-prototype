@@ -1,7 +1,7 @@
 extends Node
 
 
-var current_scene = null
+var current_scene: Object = null
 
 
 # Called when the node enters the scene tree for the first time.
@@ -27,7 +27,7 @@ func _deferred_goto_scene(path: String):
 	current_scene.free()
 	
 	# Load the new scene.
-	var s = ResourceLoader.load(path)
+	var s: Object = ResourceLoader.load(path)
 	
 	# Instance the new scene.
 	current_scene = s.instance()
