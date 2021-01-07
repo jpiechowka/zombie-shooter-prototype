@@ -12,6 +12,12 @@ export var medium_enemies_spawn_num = 3
 export var heavy_enemies_spawn_num = 2
 export var boss_enemies_spawn_num = 1
 
+# Max numbers of enemies to spawn at one time
+export var max_light_enemies_spawn_num = 30
+export var max_medium_enemies_spawn_num = 20
+export var max_heavy_enemies_spawn_num = 15
+export var max_boss_enemies_spawn_num = 5
+
 # TODO: rename to gold maybe?
 var score = 0
 
@@ -51,43 +57,47 @@ func _on_EnemyLightTimer_timeout():
 	print_debug("Spawning light enemies, num: ", light_enemies_spawn_num)
 	
 	for _n in range(light_enemies_spawn_num):
-		$EnemyPath/EnemySpawnLocation.offset = randi()
 		var enemy_light = enemy_light_scn.instance()
-		add_child(enemy_light)
-		enemy_light.position = $EnemyPath/EnemySpawnLocation.position
-		
-	light_enemies_spawn_num += 1
+		spawn_enemy(enemy_light)
+	
+	if light_enemies_spawn_num < max_light_enemies_spawn_num:
+		light_enemies_spawn_num += 1
 
 
 func _on_EnemyMediumTimer_timeout():
 	print_debug("Spawning medium enemies, num: ", medium_enemies_spawn_num)
 	
 	for _n in range(medium_enemies_spawn_num):
-		$EnemyPath/EnemySpawnLocation.offset = randi()
 		var enemy_medium = enemy_medium_scn.instance()
-		add_child(enemy_medium)
-		enemy_medium.position = $EnemyPath/EnemySpawnLocation.position
-		
-	medium_enemies_spawn_num += 1
+		spawn_enemy(enemy_medium)
+	
+	if medium_enemies_spawn_num < max_medium_enemies_spawn_num:
+		medium_enemies_spawn_num += 1
 
 
 func _on_EnemyHeavyTimer_timeout():
 	print_debug("Spawning heavy enemies, num: ", heavy_enemies_spawn_num)
 	
 	for _n in range(heavy_enemies_spawn_num):
-		$EnemyPath/EnemySpawnLocation.offset = randi()
 		var enemy_heavy = enemy_heavy_scn.instance()
-		add_child(enemy_heavy)
-		enemy_heavy.position = $EnemyPath/EnemySpawnLocation.position
-		
-	heavy_enemies_spawn_num += 1
+		spawn_enemy(enemy_heavy)
+	
+	if heavy_enemies_spawn_num < max_heavy_enemies_spawn_num:
+		heavy_enemies_spawn_num += 1
 
 
 func _on_EnemyBossTimer_timeout():
 	print_debug("Spawning boss enemies, num: ", boss_enemies_spawn_num)
 	
 	for _n in range(boss_enemies_spawn_num):
-		$EnemyPath/EnemySpawnLocation.offset = randi()
 		var enemy_boss = enemy_boss_scn.instance()
-		add_child(enemy_boss)
-		enemy_boss.position = $EnemyPath/EnemySpawnLocation.position
+		spawn_enemy(enemy_boss)
+		
+	if boss_enemies_spawn_num < max_boss_enemies_spawn_num:
+		boss_enemies_spawn_num += 1
+
+
+func spawn_enemy(enemy_instance: Object):
+	$EnemyPath/EnemySpawnLocation.offset = randi()
+	add_child(enemy_instance)
+	enemy_instance.position = $EnemyPath/EnemySpawnLocation.position
