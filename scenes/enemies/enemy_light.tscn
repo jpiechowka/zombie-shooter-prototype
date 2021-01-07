@@ -6,11 +6,10 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 16.0941
 
-[node name="EnemyLight" type="RigidBody2D" groups=[
+[node name="EnemyLight" type="KinematicBody2D" groups=[
 "enemies",
 ]]
 collision_mask = 0
-gravity_scale = 0.0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true

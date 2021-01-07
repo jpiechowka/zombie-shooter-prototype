@@ -5,11 +5,10 @@
 
 [sub_resource type="RectangleShape2D" id=1]
 
-[node name="EnemyHeavy" type="RigidBody2D" groups=[
+[node name="EnemyHeavy" type="KinematicBody2D" groups=[
 "enemies",
 ]]
 collision_mask = 0
-gravity_scale = 0.0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
