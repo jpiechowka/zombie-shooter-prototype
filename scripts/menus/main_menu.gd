@@ -6,7 +6,7 @@ func _ready():
 
 
 func _on_FightBtn_pressed():
-	GlobalSceneLoader.goto_scene("res://scenes/game_modes/fight_mode_mockup.tscn")
+	GlobalSceneLoader.goto_scene("res://scenes/game_modes/fight_mode/fight_mode_mockup.tscn")
 
 
 func _on_ManageBaseBtn_pressed():

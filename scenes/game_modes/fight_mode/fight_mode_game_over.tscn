@@ -1,11 +1,11 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/fonts/metal_lord/metal_lord.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://scripts/menus/options_menu.gd" type="Script" id=2]
+[ext_resource path="res://scripts/game_modes/fight_mode/fight_mode_game_over.gd" type="Script" id=2]
 
 [sub_resource type="DynamicFont" id=1]
 size = 100
-outline_size = 2
+outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 extra_spacing_char = 1
@@ -19,7 +19,7 @@ use_filter = true
 extra_spacing_char = 1
 font_data = ExtResource( 1 )
 
-[node name="Options" type="MarginContainer"]
+[node name="FightModeGameOverScreen" type="MarginContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_constants/margin_right = 120
@@ -39,18 +39,18 @@ margin_bottom = 820.0
 custom_constants/separation = 50
 alignment = 1
 
-[node name="PlaceholderLbl" type="Label" parent="VBoxContainer"]
+[node name="GameOverLbl" type="Label" parent="VBoxContainer"]
 margin_top = 222.0
 margin_right = 1360.0
 margin_bottom = 342.0
 custom_fonts/font = SubResource( 1 )
-text = "OPT Placeholder"
+text = "GAME OVER"
 align = 1
 
-[node name="BackBtn" type="Button" parent="VBoxContainer"]
+[node name="BackToMenuBtn" type="Button" parent="VBoxContainer"]
 margin_top = 392.0
 margin_right = 1360.0
 margin_bottom = 518.0
 custom_fonts/font = SubResource( 2 )
 text = "Back to Main Menu"
-[connection signal="pressed" from="VBoxContainer/BackBtn" to="." method="_on_BackBtn_pressed"]
+[connection signal="pressed" from="VBoxContainer/BackToMenuBtn" to="." method="_on_BackToMenuBtn_pressed"]

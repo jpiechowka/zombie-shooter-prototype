@@ -1,6 +1,9 @@
 extends KinematicBody2D
 
 
+signal collided_with_enemy
+
+
 export (float, 150.0, 250.0, 2.5) var player_speed = 200.0
 
 
@@ -21,7 +24,12 @@ func _physics_process(delta):
 		player_motion.x -= 1
 	
 	# move_and_collide() will NOT apply delta automatically. Multiply vector by delta
-	move_and_collide(player_motion.normalized() * player_speed * delta)
+	var collision: KinematicCollision2D = move_and_collide(player_motion.normalized() * player_speed * delta)
+	if collision:
+		if "Enemy" in collision.collider.name:
+			print_debug("Player collided with enemy")
+			emit_signal("collided_with_enemy")
+			player_death()
 	
 	look_at(get_global_mouse_position())
 
@@ -29,3 +37,8 @@ func _physics_process(delta):
 func start(pos: Vector2):
 	position = pos
 	show()
+	
+	
+func player_death():
+	hide()
+	$CollisionShape2D.set_deferred("disabled", true)

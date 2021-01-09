@@ -34,11 +34,27 @@ func new_game():
 	
 
 func game_over():
+	print_debug("Game over")
+	print_debug("Stopping timers")
 	$ScoreTimer.stop()
 	$EnemyLightTimer.stop()
 	$EnemyMediumTimer.stop()
 	$EnemyHeavyTimer.stop()
 	$EnemyBossTimer.stop()
+	print_debug("Deleting enemies")
+	get_tree().call_group("enemies", "queue_free")
+	print_debug("Deleting player")
+	get_node("Player").call("queue_free")
+	print_debug("Switch to game over scene")
+	switch_to_gamer_over_scene()
+
+
+func switch_to_gamer_over_scene():
+	GlobalSceneLoader.goto_scene("res://scenes/game_modes/fight_mode/fight_mode_game_over.tscn")
+
+
+func _on_Player_collided_with_enemy():
+	game_over()
 
 
 func _on_StartTimer_timeout():
@@ -98,6 +114,10 @@ func _on_EnemyBossTimer_timeout():
 
 
 func spawn_enemy(enemy_instance: Object):
+	if enemy_instance.connect("collided_with_player", self, "game_over", [], CONNECT_ONESHOT):
+		print_debug("Error when connecting enemy signal")
+		return
+	
 	$EnemyPath/EnemySpawnLocation.offset = randi()
 	add_child(enemy_instance)
 	enemy_instance.position = $EnemyPath/EnemySpawnLocation.position
