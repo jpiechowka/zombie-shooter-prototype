@@ -8,4 +8,3 @@ export (float, 2000.0, 5000.0, 100.0) var enemy_heavy_hp = 2500.0
 
 func _ready():
 	enemy_speed = rand_range(enemy_heavy_speed_min, enemy_heavy_speed_max)
-	print_debug("Heavy enemy speed: ", enemy_speed)
