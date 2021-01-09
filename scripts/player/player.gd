@@ -29,16 +29,10 @@ func _physics_process(delta):
 		if "Enemy" in collision.collider.name:
 			print_debug("Player collided with enemy")
 			emit_signal("collided_with_enemy")
-			player_death()
-	
+		
 	look_at(get_global_mouse_position())
 
 
 func start(pos: Vector2):
 	position = pos
 	show()
-	
-	
-func player_death():
-	hide()
-	$CollisionShape2D.set_deferred("disabled", true)

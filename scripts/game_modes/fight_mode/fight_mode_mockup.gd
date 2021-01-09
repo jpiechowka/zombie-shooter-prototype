@@ -71,10 +71,7 @@ func _on_ScoreTimer_timeout():
 
 func _on_EnemyLightTimer_timeout():
 	print_debug("Spawning light enemies, num: ", light_enemies_spawn_num)
-	
-	for _n in range(light_enemies_spawn_num):
-		var enemy_light = enemy_light_scn.instance()
-		spawn_enemy(enemy_light)
+	spawn_enemies(enemy_light_scn, light_enemies_spawn_num)
 	
 	if light_enemies_spawn_num < max_light_enemies_spawn_num:
 		light_enemies_spawn_num += 1
@@ -82,10 +79,7 @@ func _on_EnemyLightTimer_timeout():
 
 func _on_EnemyMediumTimer_timeout():
 	print_debug("Spawning medium enemies, num: ", medium_enemies_spawn_num)
-	
-	for _n in range(medium_enemies_spawn_num):
-		var enemy_medium = enemy_medium_scn.instance()
-		spawn_enemy(enemy_medium)
+	spawn_enemies(enemy_medium_scn, medium_enemies_spawn_num)
 	
 	if medium_enemies_spawn_num < max_medium_enemies_spawn_num:
 		medium_enemies_spawn_num += 1
@@ -93,10 +87,7 @@ func _on_EnemyMediumTimer_timeout():
 
 func _on_EnemyHeavyTimer_timeout():
 	print_debug("Spawning heavy enemies, num: ", heavy_enemies_spawn_num)
-	
-	for _n in range(heavy_enemies_spawn_num):
-		var enemy_heavy = enemy_heavy_scn.instance()
-		spawn_enemy(enemy_heavy)
+	spawn_enemies(enemy_heavy_scn, heavy_enemies_spawn_num)
 	
 	if heavy_enemies_spawn_num < max_heavy_enemies_spawn_num:
 		heavy_enemies_spawn_num += 1
@@ -104,20 +95,20 @@ func _on_EnemyHeavyTimer_timeout():
 
 func _on_EnemyBossTimer_timeout():
 	print_debug("Spawning boss enemies, num: ", boss_enemies_spawn_num)
+	spawn_enemies(enemy_boss_scn, boss_enemies_spawn_num)
 	
-	for _n in range(boss_enemies_spawn_num):
-		var enemy_boss = enemy_boss_scn.instance()
-		spawn_enemy(enemy_boss)
-		
 	if boss_enemies_spawn_num < max_boss_enemies_spawn_num:
 		boss_enemies_spawn_num += 1
 
 
-func spawn_enemy(enemy_instance: Object):
-	if enemy_instance.connect("collided_with_player", self, "game_over", [], CONNECT_ONESHOT):
-		print_debug("Error when connecting enemy signal")
-		return
-	
-	$EnemyPath/EnemySpawnLocation.offset = randi()
-	add_child(enemy_instance)
-	enemy_instance.position = $EnemyPath/EnemySpawnLocation.position
+func spawn_enemies(enemy_scene: PackedScene, spawn_num: int):
+	for _n in range(spawn_num):
+		var enemy_instance: Node = enemy_scene.instance()
+		
+		if enemy_instance.connect("collided_with_player", self, "game_over", [], CONNECT_ONESHOT):
+			print_debug("Error when connecting enemy signal")
+			return
+		
+		$EnemyPath/EnemySpawnLocation.offset = randi()
+		add_child(enemy_instance)
+		enemy_instance.position = $EnemyPath/EnemySpawnLocation.position
