@@ -1,10 +1,16 @@
 extends KinematicBody2D
 
 
+class_name EnemyBase
+
+
 signal collided_with_player
 
 
+var blood_splatter_scn: PackedScene = preload("res://particles/blood_splatter.tscn")
+
 var enemy_speed: float = 200.0
+var enemy_hp: float = 100.0
 var player: Object
 
 
@@ -26,3 +32,18 @@ func _physics_process(delta):
 				emit_signal("collided_with_player")
 		
 		look_at(player.global_position)
+
+
+func receive_damage_or_die(dmg: float):
+	# TODO: orientation of particles is backwards towards player.
+	# This is fine, but when enemy is hit at a differnt angle particles will be oriented incorrectly.
+	var blood_splatter_particles: Particles2D = blood_splatter_scn.instance()
+	add_child(blood_splatter_particles)
+	
+	enemy_hp = enemy_hp - dmg
+	if enemy_hp <= 0:
+		queue_free()
+		
+
+func bullet_knockback(knockback: float):
+	pass

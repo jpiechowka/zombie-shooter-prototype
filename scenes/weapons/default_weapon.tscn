@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scripts/weapons/default_weapon.gd" type="Script" id=1]
+[ext_resource path="res://assets/weapons/weapon_proto.png" type="Texture" id=2]
+[ext_resource path="res://scenes/weapons/bullets/default_bullet.tscn" type="PackedScene" id=3]
+
+[node name="DefaultWeapon" type="Node2D"]
+script = ExtResource( 1 )
+bullet_scn = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.03, 0.04 )
+texture = ExtResource( 2 )
+
+[node name="MuzzlePos" type="Position2D" parent="."]
+position = Vector2( 10, 0 )

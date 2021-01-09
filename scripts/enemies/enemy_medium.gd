@@ -8,3 +8,4 @@ export (float, 500, 1500, 5.0) var enemy_medium_hp = 550.0
 
 func _ready():
 	enemy_speed = rand_range(enemy_medium_speed_min, enemy_medium_speed_max)
+	enemy_hp = enemy_medium_hp

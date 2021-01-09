@@ -34,18 +34,14 @@ func new_game():
 	
 
 func game_over():
-	print_debug("Game over")
-	print_debug("Stopping timers")
 	$ScoreTimer.stop()
 	$EnemyLightTimer.stop()
 	$EnemyMediumTimer.stop()
 	$EnemyHeavyTimer.stop()
 	$EnemyBossTimer.stop()
-	print_debug("Deleting enemies")
 	get_tree().call_group("enemies", "queue_free")
-	print_debug("Deleting player")
+	get_tree().call_group("bullets", "queue_free")
 	get_node("Player").call("queue_free")
-	print_debug("Switch to game over scene")
 	switch_to_gamer_over_scene()
 
 
@@ -55,6 +51,13 @@ func switch_to_gamer_over_scene():
 
 func _on_Player_collided_with_enemy():
 	game_over()
+	
+
+# TODO: Implement knockback on hit
+func _on_bullet_hit_enemy(enemy_name: String, bullet_damage: float, bullet_knockback: float):
+	var enemy: EnemyBase = get_node(enemy_name)
+	enemy.bullet_knockback(bullet_knockback)
+	enemy.receive_damage_or_die(bullet_damage)
 
 
 func _on_StartTimer_timeout():
