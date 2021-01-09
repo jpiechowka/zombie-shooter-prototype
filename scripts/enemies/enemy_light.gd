@@ -21,7 +21,7 @@ func _ready():
 func _physics_process(delta):
 	# Check if player is not freed
 	if is_instance_valid(player):
-		var velocity = global_position.direction_to(player.global_position)
+		var velocity: Vector2 = global_position.direction_to(player.global_position)
 		
 		# move_and_collide() will NOT apply delta automatically. Multiply vector by delta
 		# velocity is already normalized
